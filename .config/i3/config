@@ -108,8 +108,8 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	status_command i3status
-	font pango: 20px
+	status_command i3blocks
+	font pango: Source Code Pro Regular 20px
 }
 
 # App shortcuts
@@ -120,10 +120,10 @@ bindsym Print exec gnome-screenshot -i
 bindsym Control+mod1+l exec i3lock -def -I 10
 
 # Power menu
-bindsym $mod+p exec bash ~/.config/i3/power
+bindsym $mod+p exec --no-startup-id bash ~/.config/i3/power
 
 # New workspace
-bindsym $mod+n exec bash ~/.config/i3/new-workspace
+bindsym $mod+n exec --no-startup-id bash ~/.config/i3/new-workspace
 
 # Media keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
@@ -140,3 +140,46 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-
 bindsym $mod+XF86AudioMute exec playerctl previous
 bindsym $mod+XF86AudioLowerVolume exec playerctl play-pause
 bindsym $mod+XF86AudioRaiseVolume exec playerctl next
+
+# Styling
+## Colors
+set_from_resource $fg foreground
+set_from_resource $bg background
+set_from_resource $cur cursorColor
+set_from_resource $black color0
+set_from_resource $red color1
+set_from_resource $green color2
+set_from_resource $yellow color3
+set_from_resource $blue color4
+set_from_resource $magenta color5
+set_from_resource $cyan color6
+set_from_resource $white color7
+set_from_resource $BLACK color8
+set_from_resource $RED color9
+set_from_resource $GREEN color10
+set_from_resource $YELLOW color11
+set_from_resource $BLUE color12
+set_from_resource $MAGENTA color13
+set_from_resource $CYAN color14
+set_from_resource $WHITE color15
+
+# class                 border   backgr.  text     indicator child_border
+client.focused          $BLACK   $BLACK   $WHITE   $YELLOW   $WHITE
+client.focused_inactive $bg      $bg      $fg      $yellow   $black
+client.unfocused        $bg      $bg      $fg      $yellow   $black
+client.urgent           $RED     $bg      $red     $yellow   $black
+
+client.background       $bg
+
+## Borders
+hide_edge_borders smart
+for_window [class=".*"] border normal 5
+
+# Mouse follows focus monitor
+mouse_warping output
+
+# Back and forth
+workspace_auto_back_and_forth yes
+
+# Delay urgency hint reset
+force_display_urgency_hint 500 ms

@@ -1,0 +1,23 @@
+[uptime]
+label=up
+interval=60
+command=uptime | cut -d' ' -f5 | cut -d , -f1
+
+[free memory]
+label=mem
+interval=10
+command=free -h | sed 's/\s/\n/g' | grep -v "^$" | head -n10 | tail -n1
+
+[apt]
+label=apt
+command=/usr/lib/update-notifier/apt-check 2>&1 | grep -v "0;0"
+interval=once
+color=#ff0000
+
+[public-ip]
+command=curl icanhazip.com
+interval=once
+
+[clock]
+command=date -R
+interval=1
