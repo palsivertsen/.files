@@ -109,8 +109,9 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
 	status_command i3blocks
-	font pango: Source Code Pro Regular 20px
 	tray_output primary
+	font pango:Font Awesome Regular 20px
+	font pango:Source Code Pro Regular 20px
 }
 
 # App shortcuts
