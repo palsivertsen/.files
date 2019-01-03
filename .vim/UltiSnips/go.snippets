@@ -1,0 +1,24 @@
+snippet ttt "testData"
+testData := []struct{}{{}}
+for _, data := range testData {
+	$0
+}
+endsnippet
+
+snippet tf "Test Fuction"
+test$0
+endsnippet
+
+snippet tys "struct"
+st$0
+endsnippet
+
+snippet tyi "interface"
+interface$0
+endsnippet
+
+snippet hand "HTTP Handler"
+func ${1} ${2:ServeHTTP}(w http.ResponseWriter, r *http.Request) {
+	${0:${VISUAL}}
+}
+endsnippet
