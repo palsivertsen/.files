@@ -1,5 +1,11 @@
 snippet ttt "testData"
-testData := []struct{}{{}}
+testData := []struct{
+	$1
+}{
+	{
+		$2
+	},
+}
 for _, data := range testData {
 	$0
 }
