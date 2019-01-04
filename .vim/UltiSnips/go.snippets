@@ -5,14 +5,17 @@ for _, data := range testData {
 }
 endsnippet
 
+post_jump "vim.eval('feedkeys("\<C-R>=UltiSnips#ExpandSnippet()\<CR>")')"
 snippet tf "Test Fuction"
 test$0
 endsnippet
 
+post_jump "vim.eval('feedkeys("\<C-R>=UltiSnips#ExpandSnippet()\<CR>")')"
 snippet tys "struct"
 st$0
 endsnippet
 
+post_jump "vim.eval('feedkeys("\<C-R>=UltiSnips#ExpandSnippet()\<CR>")')"
 snippet tyi "interface"
 interface$0
 endsnippet
