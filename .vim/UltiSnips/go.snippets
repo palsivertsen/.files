@@ -22,3 +22,9 @@ func ${1} ${2:ServeHTTP}(w http.ResponseWriter, r *http.Request) {
 	${0:${VISUAL}}
 }
 endsnippet
+
+snippet il "if error, log"
+if $1 != nil {
+	log.${2:Fatal}($1)
+}
+endsnippet
