@@ -117,9 +117,10 @@ bindsym $mod+p exec --no-startup-id bash ~/.config/i3/power
 bindsym $mod+n exec --no-startup-id bash ~/.config/i3/new-workspace
 
 # Media keys
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+# Set Master: https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture#An_example_of_setting_default_device_using_%22defaults%22_node
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 1%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 1%-
+bindsym XF86AudioMute exec --no-startup-id amixer sset Master toggle
 
 # Brightness
 # See: https://github.com/Hummer12007/brightnessctl
