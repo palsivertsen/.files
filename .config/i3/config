@@ -75,7 +75,7 @@ bindsym $mod+b workspace back_and_forth
 bindsym $mod+shift+x move workspace to output right
 bindsym $mod+x focus output right
 bindsym $mod+Tab workspace next_on_output
-bindsym $mod+shift+Tab workspace next
+bindsym $mod+shift+Tab workspace prev_on_output
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
