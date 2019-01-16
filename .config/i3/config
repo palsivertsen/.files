@@ -104,6 +104,11 @@ bar {
 	tray_output primary
 	font pango:Font Awesome Regular 20px
 	font pango:Source Code Pro Regular 20px
+	workspace_buttons no
+}
+
+bar {
+	position top
 }
 
 # App shortcuts
