@@ -138,6 +138,9 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 1%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 1%-
 bindsym XF86AudioMute exec --no-startup-id amixer sset Master toggle
 
+# Calculator
+bindsym XF86Calculator exec gnome-calculator
+
 # Brightness
 # See: https://github.com/Hummer12007/brightnessctl
 # Remember to add udev rules and add user to "video" group
