@@ -153,34 +153,14 @@ bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 
 # Styling
-## Colors
-set_from_resource $fg foreground
-set_from_resource $bg background
-set_from_resource $cur cursorColor
-set_from_resource $black color0
-set_from_resource $red color1
-set_from_resource $green color2
-set_from_resource $yellow color3
-set_from_resource $blue color4
-set_from_resource $magenta color5
-set_from_resource $cyan color6
-set_from_resource $white color7
-set_from_resource $BLACK color8
-set_from_resource $RED color9
-set_from_resource $GREEN color10
-set_from_resource $YELLOW color11
-set_from_resource $BLUE color12
-set_from_resource $MAGENTA color13
-set_from_resource $CYAN color14
-set_from_resource $WHITE color15
+# class                 border  bground text    indicator child_border
+client.focused_inactive #6E2E00 #933D00 #421B00 #DE6A18   #B34D05
+client.focused          #6E3800 #934A00 #422100 #DE7C18   #B35D05
+client.unfocused        #013645 #02485C #002029 #13708A   #07586F
+client.urgent           #00453C #005C50 #002A24 #0F8B7A   #037061
+client.placeholder      #ff38a8 #3d033d #42c6ff #db119e   #ff38a8
 
-# class                 border   backgr.  text     indicator child_border
-client.focused          $BLACK   $BLACK   $WHITE   $YELLOW   $WHITE
-client.focused_inactive $bg      $bg      $fg      $yellow   $black
-client.unfocused        $bg      $bg      $fg      $yellow   $black
-client.urgent           $RED     $bg      $red     $yellow   $black
-
-client.background       $bg
+client.background       #FFFFFF
 
 ## Borders
 hide_edge_borders smart
