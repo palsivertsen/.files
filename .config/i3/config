@@ -154,8 +154,8 @@ bindsym XF86AudioNext exec playerctl next
 
 # Styling
 # class                 border  bground text    indicator child_border
+client.focused          #6E3800 #934A00 #F5EEE7 #DE7C18   #B35D05
 client.focused_inactive #6E2E00 #933D00 #421B00 #DE6A18   #B34D05
-client.focused          #6E3800 #934A00 #422100 #DE7C18   #B35D05
 client.unfocused        #013645 #02485C #002029 #13708A   #07586F
 client.urgent           #00453C #005C50 #002A24 #0F8B7A   #037061
 client.placeholder      #ff38a8 #3d033d #42c6ff #db119e   #ff38a8
