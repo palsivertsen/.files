@@ -1,14 +1,24 @@
-snippet ttt "testData"
-testData := []struct{
+snippet ttt "Table driven test"
+tests := []struct{
+	name string
 	$1
 }{
 	{
 		$2
 	},
 }
-for _, data := range testData {
-	$0
+for _, tt := range tests {
+	tt := tt
+	t.Run(tt.name, func(t *testing.T) {
+		$0
+	})
 }
+endsnippet
+
+# pre_expand "snip.buffer[1] += 'GoImport github.com/golang/mock/gomock'"
+snippet gomock "gomock"
+ctrl := gomock.NewController()
+defer ctrl.Finish()
 endsnippet
 
 post_jump "vim.eval('feedkeys("\<C-R>=UltiSnips#ExpandSnippet()\<CR>")')"
@@ -48,4 +58,10 @@ endsnippet
 
 snippet len "len"
 len($1)
+endsnippet
+
+snippet ifnn "If x not nil"
+if ${1:err} != nil {
+	${2:return $1}
+}
 endsnippet
