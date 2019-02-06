@@ -17,7 +17,7 @@ endsnippet
 
 # pre_expand "snip.buffer[1] += 'GoImport github.com/golang/mock/gomock'"
 snippet gomock "gomock"
-ctrl := gomock.NewController()
+ctrl := gomock.NewController(t)
 defer ctrl.Finish()
 endsnippet
 
