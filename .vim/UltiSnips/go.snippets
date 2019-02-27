@@ -1,15 +1,26 @@
-snippet ttt "Table driven test"
-tests := []struct{
-	name string
-	$1
+snippet ttm "Table test map"
+tests := map[string]struct{
+	${1:fields}
 }{
-	{
-		$2
-	},
+	"${2:name}": { $3 },
+}
+for name, tt := range tests {
+	tt := tt
+	t.Run(name, func(t *testing.T) {
+		$0
+	})
+}
+endsnippet
+
+snippet ttm "Table test struct"
+tests := []struct{
+	${1:fields}
+}{
+	{ $3 },
 }
 for _, tt := range tests {
 	tt := tt
-	t.Run(tt.name, func(t *testing.T) {
+	t.Run(fmt.Sprintf("${2:%#v}", ${3:tt}), func(t *testing.T) {
 		$0
 	})
 }
@@ -64,4 +75,12 @@ snippet ifnn "If x not nil"
 if ${1:err} != nil {
 	${2:return $1}
 }
+endsnippet
+
+snippet ctxbackround "background context"
+ctx := context.Background()
+endsnippet
+
+snippet ctxtodo "TODO context"
+ctx := context.TODO()
 endsnippet
