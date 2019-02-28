@@ -1,4 +1,4 @@
-snippet ttm "Table test map"
+snippet ttm "Table test map" i
 tests := map[string]struct{
 	${1:fields}
 }{
@@ -12,7 +12,7 @@ for name, tt := range tests {
 }
 endsnippet
 
-snippet ttm "Table test struct"
+snippet tts "Table test struct" i
 tests := []struct{
 	${1:fields}
 }{
@@ -27,13 +27,13 @@ for _, tt := range tests {
 endsnippet
 
 # pre_expand "snip.buffer[1] += 'GoImport github.com/golang/mock/gomock'"
-snippet gomock "gomock"
+snippet gomock "gomock" i
 ctrl := gomock.NewController(t)
 defer ctrl.Finish()
 endsnippet
 
 post_jump "vim.eval('feedkeys("\<C-R>=UltiSnips#ExpandSnippet()\<CR>")')"
-snippet tf "Test Fuction"
+snippet tf "Test Fuction" b
 test$0
 endsnippet
 
@@ -43,7 +43,7 @@ st$0
 endsnippet
 
 post_jump "vim.eval('feedkeys("\<C-R>=UltiSnips#ExpandSnippet()\<CR>")')"
-snippet tyi "interface"
+snippet tyi "interface" w
 interface$0
 endsnippet
 
@@ -59,15 +59,15 @@ if $1 != nil {
 }
 endsnippet
 
-snippet ni "Not implemented"
+snippet ni "Not implemented" w
 panic("Not implemented")
 endsnippet
 
-snippet errors "New error"
+snippet errors "New error" w
 errors.New("$1")
 endsnippet
 
-snippet len "len"
+snippet len "len" w
 len($1)
 endsnippet
 
@@ -77,12 +77,17 @@ if ${1:err} != nil {
 }
 endsnippet
 
-snippet ctxbackround "background context"
-ctx := context.Background()
+snippet ctxbackround "background context" w
+context.Background()
 endsnippet
 
-snippet ctxtodo "TODO context"
-ctx := context.TODO()
+snippet ctxtodo "TODO context" w
+context.TODO()
+endsnippet
+
+snippet ctxcancel "context with cancel"
+ctx, cancel := context.WithCancel($1)
+defer cancel()
 endsnippet
 
 snippet mu "Mutex"
