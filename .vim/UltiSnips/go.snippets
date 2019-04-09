@@ -90,6 +90,11 @@ ctx, cancel := context.WithCancel($1)
 defer cancel()
 endsnippet
 
+snippet ctxtimeout "context with timeout"
+ctx, cancel := context.WithTimeout($2, $1)
+defer cancel()
+endsnippet
+
 snippet mu "Mutex"
 mu sync.Mutex
 endsnippet
