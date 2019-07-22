@@ -108,19 +108,88 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-	status_command i3blocks
-	tray_output primary
-	font pango:Font Awesome Regular 20px
-	font pango:Source Code Pro Regular 20px
-	workspace_buttons no
-}
-
 bar {
 	position top
+	status_command i3blocks -c ~/.config/i3blocks/top.config
+
+	font pango:Font Awesome Regular 20px
+	font pango:Source Code Pro Regular 20px
 }
+
+# Bottom left
+bar {
+	id bl
+	status_command i3blocks -c ~/.config/i3blocks/bl.config
+	tray_output primary
+	output DP1
+	workspace_buttons no
+
+	font pango:Font Awesome Regular 20px
+	font pango:Source Code Pro Regular 20px
+}
+
+# Bottom right
+bar {
+	id br
+	position bottom
+	tray_output HDMI1
+	output HDMI1
+	status_command i3blocks -c ~/.config/i3blocks/br.config
+	workspace_buttons no
+
+	font pango:Font Awesome Regular 20px
+	font pango:Source Code Pro Regular 20px
+}
+
+# Keyboard layout
+bindsym $mod+q exec setxkbmap us -option compose:ralt
+
+######
+# Gaps
+######
+client.focused          #bf4e30 #d95d39 #0e1428 #f0a202
+gaps inner 20
+gaps outer 10
+for_window [class="^.*"] border pixel 5
+smart_gaps on
+smart_borders on
+
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
 
 # App shortcuts
 bindsym $mod+g exec google-chrome
@@ -178,8 +247,19 @@ workspace_auto_back_and_forth yes
 # Delay urgency hint reset
 force_display_urgency_hint 500 ms
 
-# Scratchpad
-assign [title="^Slack"] scratchpad
-for_window [title="^Slack"] move to scratchpad
-bindsym $mod+Shift+i move scratchpad
-bindsym $mod+i scratchpad show
+# Slack
+assign [title="^Slack - "] slack
+for_window [title="^Slack - "] move to slack
+bindsym $mod+i workspace slack
+
+# Slack
+exec --no-startup-id slack
+
+# Spotify
+#exec spotify
+for_window [class="^Spotify$"] move workspace music
+workspace music output HDMI-1
+bindsym $mod+m workspace music
+
+# Keynav
+exec --no-startup-id keynav
